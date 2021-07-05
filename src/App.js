@@ -1,6 +1,19 @@
-const App =() => {
+import React from 'react';
+import SignIn from './components/SignIn';
+import Register from './components/Register'
+import Checkout from './components/Checkout';
+import Dashboard from './components/Dashboard';
+
+
+const App = () => {
   return (
-    <h1>Aplicação</h1>
+    <>
+      <SignIn />
+      <Register />
+      <Checkout />
+      <Dashboard />
+    </>
+
   );
 }
 

@@ -12,19 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from '../Common/Copyright';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -60,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
     const classes = useStyles();
 
+    const tipoUsuario = 'admin';
+
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -70,7 +60,7 @@ export default function SignIn() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Acesse aqui
                     </Typography>
                     <form className={classes.form} noValidate>
                         <TextField
@@ -79,7 +69,7 @@ export default function SignIn() {
                             required
                             fullWidth
                             id="email"
-                            label="Email Address"
+                            label="Endereço de Email"
                             name="email"
                             autoComplete="email"
                             autoFocus
@@ -90,33 +80,34 @@ export default function SignIn() {
                             required
                             fullWidth
                             name="password"
-                            label="Password"
+                            label="Senha"
                             type="password"
                             id="password"
                             autoComplete="current-password"
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            label="Lembre-me"
                         />
                         <Button
                             type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
+                            href={tipoUsuario === 'cidadao' ? "/checkout" : "/dashboard"}
                             className={classes.submit}
                         >
-                            Sign In
+                            Acessar
                         </Button>
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
-                                    Forgot password?
+                                    Esqueceu sua Senha?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                <Link href="/register" variant="body2">
+                                    Cadastre-se!
                                 </Link>
                             </Grid>
                         </Grid>

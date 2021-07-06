@@ -7,6 +7,22 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Titulo from "../Titulo"
+import axios from 'axios';
+
+const instance = axios.create({
+    baseURL: 'http://devweb.abrantes.pro.br:3005//api/',
+    timeout: 1000,
+    headers: {'X-Custom-Header': 'foobar'}
+  });
+
+async function getAgendamentos() {
+    try {
+      const response = await axios.get('/user?ID=12345');
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -35,15 +51,15 @@ export default function Agendamentos() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Titulo>Recent Orders</Titulo>
+            <Titulo>Agendamentos</Titulo>
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Date</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Ship To</TableCell>
-                        <TableCell>Payment Method</TableCell>
-                        <TableCell align="right">Sale Amount</TableCell>
+                        <TableCell>Data</TableCell>
+                        <TableCell>Cidadão</TableCell>
+                        <TableCell>E-mail</TableCell>
+                        <TableCell>Local</TableCell>
+                        <TableCell align="right">Data/Hora</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

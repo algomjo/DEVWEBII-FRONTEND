@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Endereço', 'Local de Vacinação', 'Revise os Dados'];
 
 function getStepContent(step) {
     switch (step) {
@@ -84,14 +84,14 @@ export default function Checkout() {
             <AppBar position="absolute" color="default" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" color="inherit" noWrap>
-                        Company name
+                        Vacinação
                     </Typography>
                 </Toolbar>
             </AppBar>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
-                        Checkout
+                        Agendamento
                     </Typography>
                     <Stepper activeStep={activeStep} className={classes.stepper}>
                         {steps.map((label) => (
@@ -104,12 +104,23 @@ export default function Checkout() {
                         {activeStep === steps.length ? (
                             <React.Fragment>
                                 <Typography variant="h5" gutterBottom>
-                                    Thank you for your order.
+                                    Vacina Agendada.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Your order number is #2001539. We have emailed your order confirmation, and will
-                                    send you an update when your order has shipped.
+                                    Seu número de agendamento é #2001539. Enviamos um email de confirmação.
                                 </Typography>
+
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    href={"/dashboard"}
+                                    className={classes.submit}
+                                >
+                                    Finalizar
+                                </Button>
+
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
@@ -117,7 +128,7 @@ export default function Checkout() {
                                 <div className={classes.buttons}>
                                     {activeStep !== 0 && (
                                         <Button onClick={handleBack} className={classes.button}>
-                                            Back
+                                            Voltar
                                         </Button>
                                     )}
                                     <Button
@@ -126,7 +137,7 @@ export default function Checkout() {
                                         onClick={handleNext}
                                         className={classes.button}
                                     >
-                                        {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                        {activeStep === steps.length - 1 ? 'Agendar' : 'Próximo'}
                                     </Button>
                                 </div>
                             </React.Fragment>

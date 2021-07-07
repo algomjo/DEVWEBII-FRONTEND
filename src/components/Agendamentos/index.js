@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -7,35 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Titulo from "../Titulo"
-import axios from 'axios';
-
-const instance = axios.create({
-    baseURL: 'http://devweb.abrantes.pro.br:3005//api/',
-    timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
-  });
-
-async function getAgendamentos() {
-    try {
-      const response = await axios.get('/user?ID=12345');
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-    return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-    createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-    createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-    createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-    createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-];
+import { getAgendamentos } from '../../services/axios';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -49,6 +21,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Agendamentos() {
     const classes = useStyles();
+    
+    const [agendamentos, setAgendamentos] = useState([]);
+    useEffect(async () => {
+        try{
+            let a = await getAgendamentos();
+            setAgendamentos(a);
+        }catch(error){
+            console.log(error);
+        }
+    }, [])
+
     return (
         <React.Fragment>
             <Titulo>Agendamentos</Titulo>
@@ -63,20 +46,20 @@ export default function Agendamentos() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {agendamentos.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell>{row.date}</TableCell>
                             <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.shipTo}</TableCell>
-                            <TableCell>{row.paymentMethod}</TableCell>
-                            <TableCell align="right">{row.amount}</TableCell>
+                            <TableCell>{row.username}</TableCell>
+                            <TableCell>{row.email}</TableCell>
+                            <TableCell>{row.website}</TableCell>
+                            <TableCell align="right">{row.phone}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
             <div className={classes.seeMore}>
                 <Link color="primary" href="#" onClick={preventDefault}>
-                    See more orders
+                    Ver Mais Agendamentos
                 </Link>
             </div>
         </React.Fragment>

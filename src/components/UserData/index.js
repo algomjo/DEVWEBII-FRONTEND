@@ -9,7 +9,7 @@ export default function UserData() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Shipping address
+                Dados do Endereço
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
@@ -17,7 +17,7 @@ export default function UserData() {
                         required
                         id="firstName"
                         name="firstName"
-                        label="First name"
+                        label="Nome"
                         fullWidth
                         autoComplete="given-name"
                     />
@@ -27,7 +27,7 @@ export default function UserData() {
                         required
                         id="lastName"
                         name="lastName"
-                        label="Last name"
+                        label="Sobrenome"
                         fullWidth
                         autoComplete="family-name"
                     />
@@ -37,7 +37,7 @@ export default function UserData() {
                         required
                         id="address1"
                         name="address1"
-                        label="Address line 1"
+                        label="Linha de Endereço 1"
                         fullWidth
                         autoComplete="shipping address-line1"
                     />
@@ -46,7 +46,7 @@ export default function UserData() {
                     <TextField
                         id="address2"
                         name="address2"
-                        label="Address line 2"
+                        label="Linha de Endereço 2"
                         fullWidth
                         autoComplete="shipping address-line2"
                     />
@@ -56,20 +56,20 @@ export default function UserData() {
                         required
                         id="city"
                         name="city"
-                        label="City"
+                        label="Cidade"
                         fullWidth
                         autoComplete="shipping address-level2"
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="state" name="state" label="State/Province/Region" fullWidth />
+                    <TextField id="state" name="state" label="Estado" fullWidth />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         required
                         id="zip"
                         name="zip"
-                        label="Zip / Postal code"
+                        label="CEP"
                         fullWidth
                         autoComplete="shipping postal-code"
                     />
@@ -79,17 +79,17 @@ export default function UserData() {
                         required
                         id="country"
                         name="country"
-                        label="Country"
+                        label="País"
                         fullWidth
                         autoComplete="shipping country"
                     />
                 </Grid>
-                <Grid item xs={12}>
+{/*                 <Grid item xs={12}>
                     <FormControlLabel
                         control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
                         label="Use this address for payment details"
                     />
-                </Grid>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     );

@@ -22,8 +22,9 @@ import { mainListItems, secondaryListItems } from '../Lista';
 import Chart from '../Chart';
 import Numeros from '../Numeros';
 import Agendamentos from '../Agendamentos';
+import Copyright from '../Common/Copyright';
 
-function Copyright() {
+/* function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
@@ -34,7 +35,7 @@ function Copyright() {
             {'.'}
         </Typography>
     );
-}
+} */
 
 const drawerWidth = 240;
 
@@ -146,7 +147,7 @@ export default function Dashboard() {
                         Dashboard
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
+                        <Badge badgeContent={3} color="secondary">
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>

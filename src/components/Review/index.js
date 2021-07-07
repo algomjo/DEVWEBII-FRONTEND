@@ -13,12 +13,12 @@ const products = [
     { name: 'Product 4', desc: 'Best thing of all', price: '$14.11' },
     { name: 'Shipping', desc: '', price: 'Free' },
 ];
-const addresses = ['1 Material-UI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
+const addresses = ['Rua Dev WEB II', 'C2', 'FAESA', 'Vitória', 'ES'];
 const payments = [
-    { name: 'Card type', detail: 'Visa' },
-    { name: 'Card holder', detail: 'Mr John Smith' },
-    { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-    { name: 'Expiry date', detail: '04/2024' },
+    { name: 'Cidade', detail: 'Vitória' },
+    { name: 'Bairro', detail: 'Centro' },
+    { name: 'Horário', detail: '08:00' },
+    { name: 'Data', detail: '07/07/2021' },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -39,9 +39,9 @@ export default function Review() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Order summary
+                Agendamento
             </Typography>
-            <List disablePadding>
+{/*             <List disablePadding>
                 {products.map((product) => (
                     <ListItem className={classes.listItem} key={product.name}>
                         <ListItemText primary={product.name} secondary={product.desc} />
@@ -54,18 +54,18 @@ export default function Review() {
                         $34.06
                     </Typography>
                 </ListItem>
-            </List>
+            </List> */}
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <Typography variant="h6" gutterBottom className={classes.title}>
-                        Shipping
+                        Endereço
                     </Typography>
-                    <Typography gutterBottom>John Smith</Typography>
+                    <Typography gutterBottom>Alexandre Gomes</Typography>
                     <Typography gutterBottom>{addresses.join(', ')}</Typography>
                 </Grid>
                 <Grid item container direction="column" xs={12} sm={6}>
                     <Typography variant="h6" gutterBottom className={classes.title}>
-                        Payment details
+                        Local de Agendamento
                     </Typography>
                     <Grid container>
                         {payments.map((payment) => (
